@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/layout/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="בחר סוג התקנה:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:gravity="right" />
+
+        <RadioGroup
+            android:id="@+id/rgInstallType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="12dp">
+
+            <RadioButton
+                android:id="@+id/rbTemporary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="התקנה זמנית (ל-RAM)"
+                android:textSize="16sp"
+                android:checked="true"
+                android:focusable="true"
+                android:gravity="right|center_vertical"
+                android:nextFocusDown="@+id/rbPermanent" />
+
+            <RadioButton
+                android:id="@+id/rbPermanent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="התקנה קבועה (לדיסק המערכת)"
+                android:textSize="16sp"
+                android:focusable="true"
+                android:gravity="right|center_vertical"
+                android:nextFocusUp="@+id/rbTemporary"
+                android:nextFocusDown="@+id/cbAutoBoot" />
+        </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/cbAutoBoot"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="טען אוטומטית בכל פתיחה של האפליקציה"
+            android:textSize="15sp"
+            android:focusable="true"
+            android:gravity="right|center_vertical"
+            android:layout_marginBottom="24dp"
+            android:nextFocusUp="@+id/rbPermanent"
+            android:nextFocusDown="@+id/lvFileExplorer" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#DDDDDD"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/tvCurrentPath"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="נתיב נוכחי: /"
+            android:textSize="14sp"
+            android:textColor="#555555"
+            android:gravity="right"
+            android:layout_marginBottom="8dp" />
+
+        <ListView
+            android:id="@+id/lvFileExplorer"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:focusable="true"
+            android:background="#F9F9F9"
+            android:divider="#EEEEEE"
+            android:dividerHeight="1dp"
+            android:nextFocusUp="@+id/cbAutoBoot"
+            android:nextFocusDown="@+id/btnInstallCert"
+            android:layout_marginBottom="24dp"/>
+
+        <Button
+            android:id="@+id/btnInstallCert"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="בצע התקנה לתעודות המסומנות (Root)"
+            android:focusable="true"
+            android:nextFocusUp="@+id/lvFileExplorer" />
+
+    </LinearLayout>
+</ScrollView>
