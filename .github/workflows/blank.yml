@@ -16,10 +16,19 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Install Gradle 8.2 via SDK
+      - name: Download Gradle 8.2
         run: |
-          sudo apt-get install -y gradle
-          gradle --version
+          wget -q https://services.gradle.org/distributions/gradle-8.2-bin.zip -O /tmp/gradle.zip
+          unzip -q /tmp/gradle.zip -d /opt
+          echo "/opt/gradle-8.2/bin" >> $GITHUB_PATH
+
+      - name: Update gradle-wrapper.properties
+        run: |
+          echo "distributionBase=GRADLE_USER_HOME
+          distributionPath=wrapper/dists
+          distributionUrl=file\:///opt/gradle-8.2-bin.zip
+          zipStoreBase=GRADLE_USER_HOME
+          zipStorePath=wrapper/dists" > gradle/wrapper/gradle-wrapper.properties
 
       - name: Build Debug APK
         run: gradle assembleDebug
