@@ -16,10 +16,10 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Install Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: '8.2'
+      - name: Install Gradle 8.2 via SDK
+        run: |
+          sudo apt-get install -y gradle
+          gradle --version
 
       - name: Build Debug APK
         run: gradle assembleDebug
